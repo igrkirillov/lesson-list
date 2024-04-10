@@ -23,8 +23,7 @@ export default class ItemEditorWidget {
     const element = document.createElement("div");
     element.classList.add("editor");
     element.classList.add("editor-hidden");
-    element.innerHTML =
-      `<form class="editor-form">
+    element.innerHTML = `<form class="editor-form">
         <label for="name">Название</label>
         <input type="text" id="name" class="editor-name"/>
         <label for="price">Стоимость</label>
@@ -50,7 +49,9 @@ export default class ItemEditorWidget {
       // прерываем процесс сохранения
       return;
     }
-    this.listWidget.addItem(new ItemDto(this.nameElement.value, this.priceElement.value));
+    this.listWidget.addItem(
+      new ItemDto(this.nameElement.value, this.priceElement.value)
+    );
     this.close();
   }
 

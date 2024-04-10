@@ -9,8 +9,7 @@ export default class ToolTipWidget {
     const element = document.createElement("div");
     element.classList.add("tip");
     element.classList.add("tip-hidden");
-    element.innerHTML =
-      `<span class="tip-text">
+    element.innerHTML = `<span class="tip-text">
         some text
       </span>`;
     document.body.appendChild(element);
@@ -25,8 +24,12 @@ export default class ToolTipWidget {
 
   locatePosition() {
     const ownerRect = this.ownerElement.getBoundingClientRect();
-    this.element.style.left = ownerRect.left + ownerRect.width / 2 - this.element.offsetWidth / 2 + "px";
-    this.element.style.top = (ownerRect.bottom + 2) + "px";
+    this.element.style.left =
+      ownerRect.left +
+      ownerRect.width / 2 -
+      this.element.offsetWidth / 2 +
+      "px";
+    this.element.style.top = ownerRect.bottom + 2 + "px";
   }
 
   close() {

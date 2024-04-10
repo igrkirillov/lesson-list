@@ -1,6 +1,6 @@
-import addIcon from '../icons/add.png';
-import removeIcon from '../icons/remove.png';
-import editIcon from '../icons/edit.png';
+import addIcon from "../icons/add.png";
+import removeIcon from "../icons/remove.png";
+import editIcon from "../icons/edit.png";
 import ItemEditorWidget from "./ItemEditorWidget";
 import ItemDto from "./ItemDto";
 
@@ -19,8 +19,7 @@ export default class ListWidget {
   createElement(ownerElement) {
     const element = document.createElement("div");
     element.classList.add("list");
-    element.innerHTML =
-      `<div class="list-header">
+    element.innerHTML = `<div class="list-header">
         <span class="list-title">Товары</span>
         <div class="list-actions">
           <a href="#" class="list-action list-action-add"><img src="${addIcon}" alt="add"></a>
@@ -47,8 +46,7 @@ export default class ListWidget {
     const itemsElement = this.element.querySelector(".list-items");
     const itemElement = document.createElement("div");
     itemElement.classList.add("list-item");
-    itemElement.innerHTML =
-      `<div class="list-item-cell">
+    itemElement.innerHTML = `<div class="list-item-cell">
         ${itemDto.name}
        </div>
        <div class="list-item-cell">
