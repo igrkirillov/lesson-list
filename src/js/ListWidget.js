@@ -23,7 +23,7 @@ export default class ListWidget {
       `<div class="list-header">
         <span class="list-title">Товары</span>
         <div class="list-actions">
-          <a href="/" class="list-action list-action-add"><img src="${addIcon}" alt="add"></a>
+          <a href="#" class="list-action list-action-add"><img src="${addIcon}" alt="add"></a>
         </div>
        </div>
        <div class="list-items">
@@ -55,8 +55,8 @@ export default class ListWidget {
         ${itemDto.price}
        </div>
        <div class="list-item-cell">
-        <a href="/" class="item-action item-action-remove"><img src="${removeIcon}" alt="remove"></a>
-        <a href="/" class="item-action item-action-edit"><img src="${editIcon}" alt="edit"></a>
+        <a href="#" class="item-action item-action-remove"><img src="${removeIcon}" alt="remove"></a>
+        <a href="#" class="item-action item-action-edit"><img src="${editIcon}" alt="edit"></a>
        </div>`;
     itemsElement.appendChild(itemElement);
   }

@@ -1,4 +1,5 @@
 import ItemDto from "./ItemDto";
+import ToolTipWidget from "./ToolTipWidget";
 
 export default class ItemEditorWidget {
   constructor(listWidget) {
@@ -13,6 +14,9 @@ export default class ItemEditorWidget {
     this.onClickCancel = this.onClickCancel.bind(this);
 
     this.addActionsListeners();
+
+    this.nameTipWidget = new ToolTipWidget(this.nameElement);
+    this.priceTipWidget = new ToolTipWidget(this.priceElement);
   }
 
   createElement() {
@@ -24,7 +28,7 @@ export default class ItemEditorWidget {
         <label for="name">Название</label>
         <input type="text" id="name" class="editor-name"/>
         <label for="price">Стоимость</label>
-        <input type="number" id="price" class="editor-name"/>
+        <input type="number" id="price" class="price"/>
         <div class="editor-buttons">
           <input type="submit" class="editor-button-save" value="Сохранить"/>
           <input type="submit" class="editor-button-cancel" value="Отмена"/>
@@ -41,8 +45,32 @@ export default class ItemEditorWidget {
 
   onClickSave(event) {
     event.preventDefault();
+    this.resetTips();
+    if (!this.validateFields()) {
+      // прерываем процесс сохранения
+      return;
+    }
     this.listWidget.addItem(new ItemDto(this.nameElement.value, this.priceElement.value));
     this.close();
+  }
+
+  resetTips() {
+    this.nameTipWidget.close();
+    this.priceTipWidget.close();
+  }
+
+  validateFields() {
+    const nameValue = this.nameElement.value;
+    if (!nameValue || !nameValue.trim()) {
+      this.nameTipWidget.open("Наименование товара не должно быть пустым!");
+      return false;
+    }
+    const priceValue = this.priceElement.value;
+    if (priceValue < 0) {
+      this.priceElement.open("Цена не может быть меньше 0!");
+      return false;
+    }
+    return true;
   }
 
   onClickCancel(event) {
@@ -58,6 +86,7 @@ export default class ItemEditorWidget {
   }
 
   close() {
+    this.resetTips();
     this.element.classList.add("editor-hidden");
   }
 }

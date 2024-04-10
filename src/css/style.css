@@ -90,3 +90,15 @@ body {
 .editor-buttons input:last-child {
     margin-right: 0;
 }
+
+.tip {
+    position: absolute;
+}
+
+.tip-hidden {
+    display: none;
+}
+
+.tip-text {
+    font-style: italic;
+}
